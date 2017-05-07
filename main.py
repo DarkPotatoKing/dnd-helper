@@ -13,3 +13,7 @@ def roll(num_dice = 1, num_faces = 6):
 def roll_4d6_drop_lowest():
     rolls = [roll() for _ in xrange(4)]
     return sum(rolls) - min(rolls)
+
+# roll stats using "4d6 drop lowest" method
+def roll_stats():
+    return sorted([roll_4d6_drop_lowest() for _ in xrange(6)])
