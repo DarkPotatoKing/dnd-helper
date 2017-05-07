@@ -8,3 +8,9 @@ def roll(num_dice = 1, num_faces = 6):
     for _ in xrange(num_dice):
         s += random.randint(1, num_faces)
     return s
+
+# rolls a 4d6 drop lowest for stat rolls
+def roll_4d6_drop_lowest():
+    rolls = [roll() for _ in xrange(4)]
+    print rolls
+    return sum(rolls) - min(rolls)
