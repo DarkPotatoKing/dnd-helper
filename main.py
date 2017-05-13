@@ -17,3 +17,24 @@ def roll_4d6_drop_lowest():
 # roll stats using "4d6 drop lowest" method
 def roll_stats():
     return sorted([roll_4d6_drop_lowest() for _ in xrange(6)])
+
+# calculate number of hits until unit dies
+def calculate_hits_before_death(hp, ac, base_damage = 1, ac_mod = 0):
+    num_hits = float()
+    ave_damage = float()
+    total_damage = float()
+
+    for i in xrange(1, 20 + 1):
+        if i == 1:
+            total_damage += 0
+        elif i == 20:
+            total_damage += base_damage * 2
+        elif i >= ac + ac_mod:
+            total_damage += base_damage
+        else:
+            total_damage += 0
+
+    ave_damage = total_damage / 20.0
+    num_hits = hp / ave_damage
+
+    return num_hits
